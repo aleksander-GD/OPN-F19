@@ -1,0 +1,50 @@
+version: '3'
+networks:
+  network1:
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.200.0/24
+        
+  network2:
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.100.0/24
+
+services:
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: DockerfileProxy
+    container_name: proxyContainer
+    networks:
+    - network1
+    ports:
+    - "80:80"
+    environment:
+    - NGINX_HOST=localhost
+    - NGINX_PORT=8080
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+    container_name: backendContainer
+    links:
+      - database
+    ports:
+      - "5000:5000"
+    networks:
+    - network1
+
+  database:
+    build:
+      context: ./database
+      dockerfile: DockerfileDatabase
+    container_name: databaseContainer
+    ports:
+      - "32000:3306"
+    networks:
+    - network2
+    command: --default-authentication-plugin=mysql_native_password
