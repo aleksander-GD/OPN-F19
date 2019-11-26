@@ -1,0 +1,11 @@
+FROM python:3.7-alpine
+RUN pip3 install Flask && pip3 install --upgrade pip
+
+WORKDIR /application
+
+COPY app/ /application
+
+EXPOSE 5000
+
+CMD python3 /application/run.py
+
