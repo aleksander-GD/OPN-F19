@@ -1,6 +1,6 @@
 FROM python:3.7-alpine
 
-#WORKDIR /app
+WORKDIR /app
 
 # Copy app to container
 COPY app/main.py /app
