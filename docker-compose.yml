@@ -5,9 +5,9 @@ networks:
 
 services:
   proxy:
-    build:
-      context: ./proxy
-      dockerfile: DockerfileProxy
+    build: ./proxy
+      #context: ./proxy
+      #dockerfile: DockerfileProxy
     container_name: proxyContainer
     networks:
     - network1
@@ -19,9 +19,9 @@ services:
     - NGINX_HOST=localhost
     - NGINX_PORT=8080
   backend:
-    build:
-      context: ./backend
-      dockerfile: DockerfileBackend
+    build: ./backend
+      #context: ./backend
+      #dockerfile: DockerfileBackend
     container_name: backendContainer
     links:
       - database
@@ -31,9 +31,9 @@ services:
       - network1
       - network2
   database:
-    build:
-      context: ./database
-      dockerfile: DockerfileDatabase
+    build: ./database
+      #context: ./database
+      #dockerfile: DockerfileDatabase
     container_name: databaseContainer
     networks:
     - network2
