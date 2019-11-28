@@ -7,3 +7,8 @@ CREATE TABLE personTable (
 	firstname VARCHAR(100) NOT NULL,
 	lastname VARCHAR(100) NOT NULL
 );
+
+INSERT INTO
+	personTable (firstname, lastname)
+VALUES
+	("Aleksander", "Duszkiewicz")
