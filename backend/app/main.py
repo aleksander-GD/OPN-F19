@@ -76,7 +76,7 @@ def persons():
             return jsonify(payload)
             
     except mysql.connector.Error as error:
-        print(error)
+        return str(error) 
     finally:
         if (db.is_connected()):
             db.close()
