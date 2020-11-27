@@ -1,4 +1,3 @@
-# Takehome 2019
 # Takehome 2019 in OPN
 
 **Submission date: 22nd of December.**
